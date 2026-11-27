@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  PartyPlannerView.swift
 //  SliceIt
 //
 //  Created by Macbook Pro on 24/11/26.
@@ -7,32 +7,28 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct PartyPlannerView: View {
     @ObservedObject var appCoordinator: AppCoordinator
-    
     var body: some View {
-        VStack {
-            Text("Home View")
-                .bold()
+        VStack{
+            HeaderView(title: "Pizza Party \nPlanner")
+
+            Spacer()
             
             Button {
-                appCoordinator.path.append(AppRoute.partyplaner)
+                appCoordinator.path.append(AppRoute.result)
             } label: {
-                Image(systemName: "plus")
-                Text("Add New Plan")
-            
+                Text("See My Pizza Plan")
             }.padding()
                 .foregroundStyle(.white)
                 .background(Capsule()
                     .fill(.blue))
-
-
-        }
-        
-        
+            
+        }.padding()
+        .background(.orange)
     }
 }
 
 #Preview {
-    HomeView(appCoordinator: AppCoordinator())
+    PartyPlannerView(appCoordinator: AppCoordinator())
 }
